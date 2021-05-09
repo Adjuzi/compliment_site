@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Compliment you!</title>
+</head>
+
+<style>
+    body{background-color: black;
+        text-align: center;
+        font-weight: bold;}
+
+</style>
+
+<body>
+<h1 style="color: limegreen">Welcome to another pick-me-up site!</h1>
+
+<button type="button" onclick="genCompliment()">
+    Get complimented today!
+</button>
+
+<script>
+    function genCompliment() {
+        fetch('/get_compliment')
+            .then(function(response) {
+                return response.json();
+            }).then(function(text) {
+                document.getElementById("compliment_text").innerHTML = text.compliment;
+            })
+    }
+</script>
+
+<p id="compliment_text" style="font-size: 20px; color:limegreen"></p>
+
+</body>
+</html>
